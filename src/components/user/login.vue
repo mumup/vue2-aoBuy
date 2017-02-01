@@ -2,33 +2,33 @@
   <div id="#login">
     <div class="login-wrap">
       <div class="login-logo">
-        <img @click="" src="#" alt="哈哈哈哈" class="logo">
+        <img @click="" src="../../assets/logo.png" alt="哈哈哈哈" class="logo">
         <h1>AoBuy</h1>
       </div>
       <div class="login-from">
-        <form id="login-form">
+        <form id="login-form" method="post" @submit.prevent="submit">
           <div class="item">
-            <label for="user" v-bind:class="{ labelFocus: user.focus }">用户名</label>
-            <input v-bind:class="{ inputFocus: user.focus }"
+            <label for="user" :class="{ labelFocus: user.focus }">用户名</label>
+            <input :class="{ inputFocus: user.focus }"
                    v-model="user.val"
                    @blur="[checkUser,blur('user')]"
-                   @focus='Focus("user")'
+                   @focus='focus("user")'
                    id="user" name="user"
                    type="text">
           </div>
           <div class="item">
             <label for="password"
-                   v-bind:class="{ labelFocus: password.focus }">密码</label>
-            <input id="password" v-bind:class="{ inputFocus: password.focus }"
+                   :class="{ labelFocus: password.focus }">密码</label>
+            <input id="password" :class="{ inputFocus: password.focus }"
                    v-model="password.val"
                    @blur="[checkUser,blur('password')]"
-                   @focus='Focus("password")'
+                   @focus='focus("password")'
                    name="password"
                    type="password">
           </div>
-          <button id="login-btn" v-bind:class="{ error : isValid }" class="login-btn" type="submit">{{btn}}</button>
+          <button id="login-btn" :class="{ error : isValid }" class="login-btn" type="submit">{{btn}}</button>
           <div>
-            <a href="" class="user-reg">立即注册</a>
+            <a href="#" class="user-reg">立即注册</a>
           </div>
         </form>
       </div>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   export default {
     name: 'login',
     data () {
@@ -55,15 +56,27 @@
         }
       }
     },
+    computed: {
+      ...mapGetters({
+        isLogin: 'isLogin'
+      })
+    },
     methods: {
       checkUser: function () {
         console.log(this.user.val)
       },
-      Focus: function ($select) {
+      focus: function ($select) {
         this[$select].focus = true
       },
       blur: function ($select) {
         this[$select].focus = this[$select].val
+      },
+      submit: function () {
+        let user = {
+          user: this.user.val,
+          password: this.password.val
+        }
+        this.$store.dispatch('UserLogin', user)
       }
     }
   }
@@ -71,7 +84,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .error{
+  .error {
     position: relative;
     background-color: #C21F39 !important;
   }
@@ -80,7 +93,7 @@
     width: 300px;
     border-radius: 5px;
     background: #fff;
-    margin: 200px auto 0 auto;
+    margin: 10% auto 0 auto;
     padding: 20px;
   }
 
