@@ -13,7 +13,8 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "vue": "^2.1.0"
+    "vue": "^2.1.0",
+    "vux": "^2.1.0-rc.18"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -57,6 +58,8 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
     "lolex": "^1.4.0",
     "mocha": "^3.1.0",
     "nightwatch": "^0.9.8",

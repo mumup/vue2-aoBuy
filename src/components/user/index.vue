@@ -1,15 +1,22 @@
 <template>
   <div>
-    <span @click="pppp">11111111111111111</span>
-    <span @click="post">22222222222222222</span>
+    <XHeader title="AoBuy"></XHeader>
   </div>
 </template>
 
 <script>
+  import {XHeader} from 'vux'
   export default {
     name: 'user',
     data () {
-      return {}
+      return {
+        leftOptions: {
+          showBack: false
+        }
+      }
+    },
+    components: {
+      XHeader
     },
     methods: {
       post: function () {
