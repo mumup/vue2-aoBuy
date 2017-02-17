@@ -20,8 +20,4 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
-  body{
-    background: #f3f3f3;
-  }
 </style>

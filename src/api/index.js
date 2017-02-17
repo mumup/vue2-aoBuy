@@ -5,14 +5,13 @@ import Vue from 'vue'
 
 export default {
   Login: function (data) {
-    return Vue.http.post('/api/tools/user_login', data)
+    return Vue.http.post('/apis/api/user_login', data)
   },
   LoginOut: function () {
-    console.log('11111')
-    return Vue.http.get('/api/logout')
+    return Vue.http.get('/apis/api/logout')
   },
   LoginCheck: function () {
-    return Vue.http.get('/api/loginCheck')
+    return Vue.http.get('/apis/api/loginCheck')
       .then(function (data) {
         if (data.status === 200) {
           return data.body
@@ -20,7 +19,7 @@ export default {
       })
   },
   CheckUserName: function (user) {
-    return Vue.http.get('/api/tools/user_check')
+    return Vue.http.get('/apis/tools/user_check')
       .then(function (data) {
         if (data.status === 200) {
           return data.body

@@ -5,13 +5,13 @@ import api from '../../api'
 import * as type from '../mutation-type'
 
 const state = {
-  isLogin: null,
+  logo: 'AoBuy',
   id: JSON.parse(localStorage.getItem('user')) || null
 }
 
 // getters
 const getters = {
-  isLogin: state => state.isLogin
+  logo: state => state.logo
 }
 
 const actions = {
