@@ -1,7 +1,9 @@
 <template>
   <div id="user">
-    <XHeader :title="Title"></XHeader>
-    <router-view></router-view>
+    <XHeader :title="headTitle" :leftOptions="titleLeft"></XHeader>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <Tabbar>
       <TabbarItem link="/user">
         <div slot="icon">111</div>
@@ -20,8 +22,8 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
   import {XHeader, Tabbar, TabbarItem} from 'vux'
+  //  import { mapGetters } from 'vuex'
   export default {
     name: 'userIndex',
     data () {
@@ -38,16 +40,32 @@
       }
     },
     computed: {
-      ...mapGetters({
-        Title: 'logo'
-      })
+//      ...mapGetters({
+//        leftOptions: 'leftOptions'
+//      }),
+      titleLeft () {
+        return {
+          showBack: !this.$route.meta.hideBack
+        }
+      },
+      headTitle () {
+        return this.$route.meta.title
+      }
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.weui_tabbar_item{
-  text-decoration: none;
-}
+  .weui_tabbar_item {
+    text-decoration: none;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+
+  .fade-enter, .fade-leave-active {
+    opacity: 0
+  }
 </style>

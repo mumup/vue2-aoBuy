@@ -19,7 +19,7 @@ export default {
       })
   },
   CheckUserName: function (user) {
-    return Vue.http.get('/apis/tools/user_check')
+    return Vue.http.get('/apis/api/user_check')
       .then(function (data) {
         if (data.status === 200) {
           return data.body

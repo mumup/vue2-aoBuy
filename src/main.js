@@ -21,10 +21,10 @@ const routes = [
     path: '/user',
     name: 'user',
     component: Index,
-    meta: {auth: true},
+    meta: {auth: true, title: 'AoBuy', hideBack: true},
     children: [                            //   嵌套路由
-      {path: '/tools', name: 'tools', component: tools, meta: {auth: true}},
-      {path: '/userCenter', name: 'userCenter', component: userCenter, meta: {auth: true}}
+      {path: '/tools', name: 'tools', component: tools, meta: {auth: true, title: '工具'}},
+      {path: '/userCenter', name: 'userCenter', component: userCenter, meta: {auth: true, title: '用户中心'}}
     ]
   },
   {path: '*', name: 'notFound', component: notFound, meta: {auth: false}}
@@ -36,8 +36,9 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach(({meta, path}, from, next) => {
-  let {auth = true} = meta                    //  坑
+router.beforeEach(({meta, path, store}, from, next) => {
+  let {auth = true, title} = meta                    //  坑
+  console.log(title)
 
   api.LoginCheck()
     .then((res) => {
@@ -50,7 +51,10 @@ router.beforeEach(({meta, path}, from, next) => {
         return next({path: '/user'})
       }
     })
-  next()
+  next(vm => {
+    // 通过 `vm` 访问组件实例
+
+  })
 })
 
 /* eslint-disable no-new */

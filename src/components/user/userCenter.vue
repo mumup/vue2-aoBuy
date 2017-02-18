@@ -1,5 +1,5 @@
 <template>
-  <div id="tools">
+  <div id="userCenter">
     用户中心
   </div>
 </template>
