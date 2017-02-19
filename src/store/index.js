@@ -6,6 +6,7 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import User from './modules/user'
 import Dialog from './modules/dialog'
+import Search from './modules/search'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,8 @@ export default new Vuex.Store({
   actions,
   modules: {
     User,
-    Dialog
+    Dialog,
+    Search
   },
   strict: debug
 })

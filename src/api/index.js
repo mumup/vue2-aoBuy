@@ -30,7 +30,7 @@ export default {
   },
   // 搜索工具=》获取最新数据
   GetNewData: function () {
-    return Vue.http.get('/apis/api/user_check')
+    return Vue.http.get('/apis/api/getNew')
       .then(function (data) {
         if (data.status === 200) {
           return data.body
