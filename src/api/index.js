@@ -10,6 +10,7 @@ export default {
   LoginOut: function () {
     return Vue.http.get('/apis/api/logout')
   },
+  // 登录状态检查
   LoginCheck: function () {
     return Vue.http.get('/apis/api/loginCheck')
       .then(function (data) {
@@ -18,7 +19,17 @@ export default {
         }
       })
   },
+  // 用户名检查
   CheckUserName: function (user) {
+    return Vue.http.get('/apis/api/user_check')
+      .then(function (data) {
+        if (data.status === 200) {
+          return data.body
+        }
+      })
+  },
+  // 搜索工具=》获取最新数据
+  GetNewData: function () {
     return Vue.http.get('/apis/api/user_check')
       .then(function (data) {
         if (data.status === 200) {

@@ -10,6 +10,7 @@ import Index from './components/user/index'
 import Login from './components/user/login'
 import tools from './components/user/tools'
 import userCenter from './components/user/userCenter'
+import Search from './components/user/search'
 import notFound from './components/notfound'
 
 Vue.use(VueRouter)
@@ -24,7 +25,8 @@ const routes = [
     meta: {auth: true, title: 'AoBuy', hideBack: true},
     children: [                            //   嵌套路由
       {path: '/tools', name: 'tools', component: tools, meta: {auth: true, title: '工具'}},
-      {path: '/userCenter', name: 'userCenter', component: userCenter, meta: {auth: true, title: '用户中心'}}
+      {path: '/userCenter', name: 'userCenter', component: userCenter, meta: {auth: true, title: '用户中心'}},
+      {path: '/search', name: 'search', component: Search, meta: {auth: true, title: '搜索'}}
     ]
   },
   {path: '*', name: 'notFound', component: notFound, meta: {auth: false}}
