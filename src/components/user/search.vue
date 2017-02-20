@@ -1,14 +1,24 @@
 <template>
   <div id="search">
-    <Search top="47px" placeholder="在此输入关键词" cancelText="取消"></Search>
-    <p v-for="item in list">
-      {{ item.goods }}
-    </p>
+    <scroller lock-x ref="scroller" height="-107">
+        <div class="box">
+          <div v-for="item in list" class="goods-card vux-1px-b">
+            <div class="goods-head clearfix">
+              <i class="goods-channel">{{ item.channel }}</i>
+              <i class="goods-price">{{ item.time }}</i>
+            </div>
+            <span class="goods-info">{{ item.goods }}</span>
+          </div>
+        </div>
+        <!--<p v-for="item in list">-->
+          <!--{{ item.goods }}-->
+        <!--</p>-->
+    </scroller>
   </div>
 </template>
 
 <script>
-  import {Search} from 'vux'
+  import {Search, Scroller} from 'vux'
   import {mapGetters} from 'vuex'
   export default {
     name: 'searchIndex',
@@ -16,6 +26,7 @@
       return {}
     },
     components: {
+      Scroller,
       Search
     },
     methods: {},
@@ -34,7 +45,38 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
 
+<style scoped>
+ i {font-style: normal;}
+
+.goods-card{
+  padding: 15px;
+}
+.goods-channel {
+  float: left;
+  display: inline-block;
+  padding: 3px;
+  width: 100px;
+  background: #ccc;
+}
+
+ .goods-head {
+   margin-bottom: 15px;
+ }
+
+ .goods-info {
+
+ }
+.goods-price {
+  float: right;
+  display: inline-block;
+  padding: 3px;
+  background: #89ce8c;
+  color: #fff;
+  width: 100px;
+  height: 15px;
+  white-space:normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>

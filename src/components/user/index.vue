@@ -1,28 +1,30 @@
 <template>
-  <div id="user">
-    <XHeader :title="headTitle" :leftOptions="titleLeft"></XHeader>
-    <transition name="fade" mode="out-in">
-      <router-view></router-view>
-    </transition>
-    <Tabbar>
-      <TabbarItem link="/user">
-        <div slot="icon">111</div>
-        <span slot="label">首页</span>
-      </TabbarItem>
-      <TabbarItem link="/tools">
-        <div slot="icon">111</div>
-        <span slot="label">工具</span>
-      </TabbarItem>
-      <TabbarItem link="/userCenter">
-        <div slot="icon">111</div>
-        <span slot="label">用户中心</span>
-      </TabbarItem>
-    </Tabbar>
+  <div id="user" style="height: 100%">
+    <view-box ref="viewBox">
+      <XHeader slot="header" :title="headTitle" :leftOptions="titleLeft" style="width:100%;position:absolute;left:0;top:0;z-index:100;"></XHeader>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
+      <Tabbar slot="bottom">
+        <TabbarItem link="/user">
+          <div slot="icon">111</div>
+          <span slot="label">首页</span>
+        </TabbarItem>
+        <TabbarItem link="/tools">
+          <div slot="icon">111</div>
+          <span slot="label">工具</span>
+        </TabbarItem>
+        <TabbarItem link="/userCenter">
+          <div slot="icon">111</div>
+          <span slot="label">用户中心</span>
+        </TabbarItem>
+      </Tabbar>
+    </view-box>
   </div>
 </template>
 
 <script>
-  import {XHeader, Tabbar, TabbarItem} from 'vux'
+  import {XHeader, Tabbar, TabbarItem, ViewBox} from 'vux'
   //  import { mapGetters } from 'vuex'
   export default {
     name: 'userIndex',
@@ -30,6 +32,7 @@
       return {}
     },
     components: {
+      ViewBox,
       XHeader,
       Tabbar,
       TabbarItem
@@ -56,7 +59,10 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+  #vux_view_box_body {
+    padding-top: 46px;
+  }
   .weui_tabbar_item {
     text-decoration: none;
   }
