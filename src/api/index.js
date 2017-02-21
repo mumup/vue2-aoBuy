@@ -4,8 +4,13 @@
 import Vue from 'vue'
 
 export default {
-  Login: function (data) {
-    return Vue.http.post('/apis/api/user_login', data)
+  Login: function (data, cb, errCb) {
+    Vue.http.post('/apis/api/user_login', data)
+      .then((rs) => {
+        rs.status === 200 && rs.body.status === 0
+        ? cb(rs.body)
+        : errCb()
+      })
   },
   LoginOut: function () {
     return Vue.http.get('/apis/api/logout')

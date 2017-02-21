@@ -18,11 +18,9 @@ const actions = {
   AC_GetNewData: ({commit}, data) => {
     api.GetNewData(data)
       .then((res) => {
-        if (res) {
-          commit(type.GET_NEW_DATA, res)
-        } else {
-          console.log('网络错误')
-        }
+        res
+          ? commit(type.GET_NEW_DATA, res)
+          : console.log('网络错误')
       })
       .catch((error) => {
         console.log(error)

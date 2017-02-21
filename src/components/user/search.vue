@@ -1,7 +1,7 @@
 <template>
   <div id="search">
-    <search :auto-scroll-to-top="true" top="46px" @on-submit="searchGet" v-model="value"></search>
-    <scroller lock-x ref="scroller" height="-107">
+    <search top="46px" @on-submit="searchGet" v-model="value" position="absolute"></search>
+    <scroller lock-x height="-151" ref="scroller">
       <search-panel :list="list"></search-panel>
     </scroller>
   </div>
@@ -15,7 +15,8 @@
     name: 'searchIndex',
     data () {
       return {
-        value: ''
+        value: '',
+        scrollTop: 0
       }
     },
     components: {
@@ -32,12 +33,10 @@
           })
         } else {
           this.$store.dispatch('AC_GetSearchData', this.value)
-          this.$nextTick(() => {
-            this.$refs.scroller.reset({
-              top: 0
-            })
-          })
         }
+      },
+      fetchData () {
+        this.$store.dispatch('AC_GetNewData')
       }
     },
     computed: {
@@ -45,13 +44,17 @@
         list: 'list'
       })
     },
-    created () {
-      // 组件创建完后获取数据，
-      // 此时 data 已经被 observed 了
-      // 显示
-//      this.$store.commit('UPDATE_LOADING', true)
-      this.$store.dispatch('AC_GetNewData')
-    }
+    mounted: function () {
+      this.fetchData()
+    },
+    updated: function () {
+      this.$nextTick(() => {
+        this.$refs.scroller.reset({
+          top: 0
+        })
+      })
+    },
+    watch: {}
   }
 </script>
 
@@ -63,6 +66,13 @@
 
   .box {
 
+  }
+
+  #search{padding-top: 46px;}
+
+  .vux-search-box {
+    position: absolute!important;
+    top: 46px;
   }
 
   .goods-card {

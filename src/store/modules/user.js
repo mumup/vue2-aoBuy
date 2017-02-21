@@ -13,18 +13,14 @@ const getters = {}
 
 const actions = {
   UserLogin: ({commit}, data) => {
-    api.Login(data)
-      .then((res) => {
-        if (res.body) {
-          commit(type.USER_SIGNIN, data.user)
-          window.location = '/user'
-        } else {
-          console.log('网络错误')
-        }
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    api.Login(
+      data,
+      () => {
+        commit(type.USER_SIGNIN, data.user)
+        window.location = '/user'
+      },
+      () => console.log('丢')
+    )
   },
 
   UserLogout: ({commit}) => {
