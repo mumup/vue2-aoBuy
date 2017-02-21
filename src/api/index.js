@@ -36,5 +36,14 @@ export default {
           return data.body
         }
       })
+  },
+  // 搜索功能
+  GetSearchData: function (word) {
+    return Vue.http.get('/apis/api/s?word=' + word)
+      .then(function (data) {
+        if (data.status === 200) {
+          return data.body
+        }
+      })
   }
 }

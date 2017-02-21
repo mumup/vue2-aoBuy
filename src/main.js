@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
+import {LoadingPlugin, ToastPlugin} from 'vux'
 import store from './store/index'
 import App from './App'
 import api from './api'
@@ -15,6 +16,8 @@ import notFound from './components/notfound'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.use(LoadingPlugin)
+Vue.use(ToastPlugin)
 
 const routes = [
   {path: '/', name: 'index', component: Login, meta: {auth: false}},

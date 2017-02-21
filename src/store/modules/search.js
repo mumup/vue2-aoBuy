@@ -1,9 +1,6 @@
 /**
  * Created by pmumu on 2017/2/19.
  */
-/**
- * Created by pmumu on 2017/2/19.
- */
 import * as type from '../mutation-type'
 import api from '../../api'
 
@@ -30,11 +27,24 @@ const actions = {
       .catch((error) => {
         console.log(error)
       })
+  },
+  AC_GetSearchData: ({commit}, word) => {
+    api.GetSearchData(word)
+      .then((res) => {
+        if (res) {
+          commit(type.GET_SEARCH_DATA, res)
+        } else {
+          console.log('网络错误')
+        }
+      })
   }
 }
 
 const mutations = {
   [type.GET_NEW_DATA] (state, data) {
+    state.list = data
+  },
+  [type.GET_SEARCH_DATA] (state, data) {
     state.list = data
   }
 }

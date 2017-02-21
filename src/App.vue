@@ -2,23 +2,26 @@
   <div id="app">
     <router-view></router-view>
     <Loading :value="isLoading"></Loading>
+    <toast   :value="isToast"></toast>
   </div>
 </template>
 
 <script>
   import {mapGetters} from 'vuex'
-  import {Loading} from 'vux'
+  import {Loading, Toast} from 'vux'
   export default {
     name: 'app',
     data () {
       return {}
     },
     components: {
-      Loading
+      Loading,
+      Toast
     },
     computed: {
       ...mapGetters({
-        isLoading: 'isLoading'
+        isLoading: 'isLoading',
+        isToast: 'isToast'
       })
     }
   }
@@ -27,6 +30,7 @@
 <style lang="less">
   @import "assets/css/normalize.css";
   @import '~vux/src/styles/1px.less';
+  @import "//at.alicdn.com/t/font_g9revw5a2tucv7vi.css";
 
   html, body {
     height: 100%;

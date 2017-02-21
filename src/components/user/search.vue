@@ -1,35 +1,45 @@
 <template>
   <div id="search">
+    <search :auto-scroll-to-top="true" top="46px" @on-submit="searchGet" v-model="value"></search>
     <scroller lock-x ref="scroller" height="-107">
-        <div class="box">
-          <div v-for="item in list" class="goods-card vux-1px-b">
-            <div class="goods-head clearfix">
-              <i class="goods-channel">{{ item.channel }}</i>
-              <i class="goods-price">{{ item.time }}</i>
-            </div>
-            <span class="goods-info">{{ item.goods }}</span>
-          </div>
-        </div>
-        <!--<p v-for="item in list">-->
-          <!--{{ item.goods }}-->
-        <!--</p>-->
+      <search-panel :list="list"></search-panel>
     </scroller>
   </div>
 </template>
 
 <script>
+  import SearchPanel from './searchPanel'
   import {Search, Scroller} from 'vux'
   import {mapGetters} from 'vuex'
   export default {
     name: 'searchIndex',
     data () {
-      return {}
+      return {
+        value: ''
+      }
     },
     components: {
       Scroller,
-      Search
+      Search,
+      SearchPanel
     },
-    methods: {},
+    methods: {
+      searchGet () {
+        if (!this.value) {
+          this.$vux.toast.show({
+            text: '不能为空',
+            type: 'cancel'
+          })
+        } else {
+          this.$store.dispatch('AC_GetSearchData', this.value)
+          this.$nextTick(() => {
+            this.$refs.scroller.reset({
+              top: 0
+            })
+          })
+        }
+      }
+    },
     computed: {
       ...mapGetters({
         list: 'list'
@@ -47,36 +57,62 @@
 
 
 <style scoped>
- i {font-style: normal;}
+  i {
+    font-style: normal;
+  }
 
-.goods-card{
-  padding: 15px;
-}
-.goods-channel {
-  float: left;
-  display: inline-block;
-  padding: 3px;
-  width: 100px;
-  background: #ccc;
-}
+  .box {
 
- .goods-head {
-   margin-bottom: 15px;
- }
+  }
 
- .goods-info {
+  .goods-card {
+    display: flex;
+    padding: 15px;
+    border-bottom: 3px solid #e4e1e1;
+  }
 
- }
-.goods-price {
-  float: right;
-  display: inline-block;
-  padding: 3px;
-  background: #89ce8c;
-  color: #fff;
-  width: 100px;
-  height: 15px;
-  white-space:normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  .goods-channel {
+    position: absolute;
+    display: inline-block;
+    bottom: 4px;
+    left: 0;
+    padding: 3px;
+    width: 94px;
+    background: #ccc;
+    opacity: .85;
+  }
+
+  .goods-head {
+    position: relative;
+    margin-right: 1rem;
+  }
+
+  .goods-head img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .goods-info {
+    text-align: left;
+  }
+
+  .goods-txt {
+    line-height: 25px;
+    height: 50px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .goods-price {
+    display: inline-block;
+    height: 15px;
+    width: 120px;
+    text-align: left;
+    padding: 3px;
+    color: #ff685b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 </style>
