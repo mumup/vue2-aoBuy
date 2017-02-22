@@ -37,11 +37,7 @@
       Tabbar,
       TabbarItem
     },
-    methods: {
-      post: function () {
-        this.$store.dispatch('UserLogout')
-      }
-    },
+    methods: {},
     computed: {
 //      ...mapGetters({
 //        leftOptions: 'leftOptions'

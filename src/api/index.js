@@ -4,6 +4,7 @@
 import Vue from 'vue'
 
 export default {
+  // 登录
   Login: function (data, cb, errCb) {
     Vue.http.post('/apis/api/user_login', data)
       .then((rs) => {
@@ -12,8 +13,9 @@ export default {
         : errCb()
       })
   },
+  // 登出
   LoginOut: function () {
-    return Vue.http.get('/apis/api/logout')
+    return Vue.http.get('/apis/api/logoff')
   },
   // 登录状态检查
   LoginCheck: function () {

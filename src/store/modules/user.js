@@ -9,7 +9,9 @@ const state = {
 }
 
 // getters
-const getters = {}
+const getters = {
+  id: state => state.id
+}
 
 const actions = {
   UserLogin: ({commit}, data) => {

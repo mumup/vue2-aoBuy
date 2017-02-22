@@ -4,7 +4,7 @@
     <div v-if="listLength == 0">
       <p class="no-box">嗨呀，空空如也</p>
     </div>
-    <scroller lock-x height="-151" ref="scroller">
+    <scroller lock-x height="-151" ref="scroller" :pulldown-config="pulldownConfig">
       <search-panel :list="list"></search-panel>
     </scroller>
   </div>
@@ -19,7 +19,16 @@
     data () {
       return {
         value: '',
-        scrollTop: 0
+        scrollTop: 0,
+        pulldownConfig: {
+          content: 'Pull Down To Refresh',
+          height: 60,
+          autoRefresh: false,
+          downContent: 'Pull Down To Refresh',
+          upContent: 'Release To Refresh',
+          loadingContent: 'Loading...',
+          clsPrefix: 'xs-plugin-pulldown-'
+        }
       }
     },
     components: {

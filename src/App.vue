@@ -2,7 +2,7 @@
   <div id="app">
     <router-view></router-view>
     <Loading :value="isLoading"></Loading>
-    <toast   :value="isToast"></toast>
+    <toast :value="isToast"></toast>
   </div>
 </template>
 
@@ -38,6 +38,10 @@
     overflow-x: hidden;
   }
 
+  body {
+    background: #fbf9fe;
+  }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -45,6 +49,7 @@
     text-align: center;
     color: #2c3e50;
     height: 100%;
+    overflow: auto;
   }
 
   a {
@@ -54,13 +59,14 @@
   .clearfix {
     *zoom: 1;
   }
-  .clearfix:before,
 
+  .clearfix:before,
   .clearfix:after {
     display: table;
     line-height: 0;
     content: "";
   }
+
   .clearfix:after {
     clear: both;
   }
