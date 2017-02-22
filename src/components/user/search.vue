@@ -1,6 +1,9 @@
 <template>
   <div id="search">
     <search top="46px" @on-submit="searchGet" v-model="value" position="absolute"></search>
+    <div v-if="listLength == 0">
+      <p class="no-box">嗨呀，空空如也</p>
+    </div>
     <scroller lock-x height="-151" ref="scroller">
       <search-panel :list="list"></search-panel>
     </scroller>
@@ -41,7 +44,8 @@
     },
     computed: {
       ...mapGetters({
-        list: 'list'
+        list: 'list',
+        listLength: 'listLength'
       })
     },
     mounted: function () {
@@ -64,14 +68,17 @@
     font-style: normal;
   }
 
-  .box {
-
+  .no-box {
+    font-size: 28px;
+    padding-top: 30%;
   }
 
-  #search{padding-top: 46px;}
+  #search {
+    padding-top: 46px;
+  }
 
   .vux-search-box {
-    position: absolute!important;
+    position: absolute !important;
     top: 46px;
   }
 

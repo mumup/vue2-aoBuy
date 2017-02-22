@@ -16,22 +16,27 @@ const getters = {
 
 const actions = {
   AC_GetNewData: ({commit}, data) => {
+    commit('UPDATE_LOADING', true)
     api.GetNewData(data)
       .then((res) => {
         res
           ? commit(type.GET_NEW_DATA, res)
           : console.log('网络错误')
+        commit('UPDATE_LOADING', false)
       })
       .catch((error) => {
         console.log(error)
       })
   },
   AC_GetSearchData: ({commit}, word) => {
+    commit('UPDATE_LOADING', true)
     api.GetSearchData(word)
       .then((res) => {
         if (res) {
+          commit('UPDATE_LOADING', false)
           commit(type.GET_SEARCH_DATA, res)
         } else {
+          commit('UPDATE_LOADING', false)
           console.log('网络错误')
         }
       })
