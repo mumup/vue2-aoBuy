@@ -6,7 +6,7 @@
         <router-view></router-view>
       </transition>
       <Tabbar slot="bottom">
-        <TabbarItem link="/user">
+        <TabbarItem link="/home">
           <div slot="icon" class="iconfont icon-zhuye" style="font-size: 20px;color: #888;"></div>
           <span slot="label">首页</span>
         </TabbarItem>

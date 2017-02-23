@@ -1,10 +1,11 @@
 <template>
   <div id="search">
-    <search top="46px" @on-submit="searchGet" v-model="value" position="absolute"></search>
+    <search top="46px" @on-submit="searchGet" v-model="searchValue" position="absolute"></search>
     <div v-if="listLength == 0">
       <p class="no-box">嗨呀，空空如也</p>
     </div>
-    <scroller lock-x height="-151" ref="scroller" :pulldown-config="pulldownConfig">
+    <scroller lock-x height="-151" ref="scroller" :pulldown-config="pulldownConfig" :use-pulldown="usePulldown"
+              v-model="status" @on-pulldown-loading="fetchData">
       <search-panel :list="list"></search-panel>
     </scroller>
   </div>
@@ -18,15 +19,19 @@
     name: 'searchIndex',
     data () {
       return {
-        value: '',
         scrollTop: 0,
+        searchValue: '',
+        usePulldown: true,
+        status: {
+          pulldownStatus: 'default'
+        },
         pulldownConfig: {
           content: 'Pull Down To Refresh',
           height: 60,
           autoRefresh: false,
-          downContent: 'Pull Down To Refresh',
-          upContent: 'Release To Refresh',
-          loadingContent: 'Loading...',
+          downContent: '震惊！继续下拉居然会↓',
+          upContent: '居然会刷新↑',
+          loadingContent: '[]~(￣▽￣)~*',
           clsPrefix: 'xs-plugin-pulldown-'
         }
       }
@@ -38,17 +43,20 @@
     },
     methods: {
       searchGet () {
-        if (!this.value) {
+        if (!this.searchValue) {
           this.$vux.toast.show({
             text: '不能为空',
             type: 'cancel'
           })
         } else {
-          this.$store.dispatch('AC_GetSearchData', this.value)
+          this.$store.dispatch('AC_GetSearchData', this.searchValue)
         }
       },
       fetchData () {
         this.$store.dispatch('AC_GetNewData')
+          .then(() => {
+            this.$refs.scroller.donePulldown()
+          })
       }
     },
     computed: {
@@ -60,14 +68,17 @@
     mounted: function () {
       this.fetchData()
     },
-    updated: function () {
-      this.$nextTick(() => {
-        this.$refs.scroller.reset({
-          top: 0
-        })
-      })
-    },
-    watch: {}
+    watch: {
+      listLength (val) {
+        if (val > 0) {
+          this.$nextTick(() => {
+            this.$refs.scroller.reset({
+              top: 0
+            })
+          })
+        }
+      }
+    }
   }
 </script>
 

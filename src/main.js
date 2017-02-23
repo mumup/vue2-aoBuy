@@ -9,6 +9,7 @@ import App from './App'
 import api from './api'
 import Index from './components/user/index'
 import Login from './components/user/login'
+import Home from './components/user/home'
 import tools from './components/user/tools'
 import userCenter from './components/user/userCenter'
 import Search from './components/user/search'
@@ -27,6 +28,7 @@ const routes = [
     component: Index,
     meta: {auth: true, title: 'AoBuy', hideBack: true},
     children: [                            //   嵌套路由
+      {path: '/home', name: 'home', component: Home, meta: {auth: true, title: 'AoBuy', hideBack: true}},
       {path: '/tools', name: 'tools', component: tools, meta: {auth: true, title: '工具'}},
       {path: '/userCenter', name: 'userCenter', component: userCenter, meta: {auth: true, title: '用户中心'}},
       {path: '/search', name: 'search', component: Search, meta: {auth: true, title: '搜索'}}
@@ -53,7 +55,7 @@ router.beforeEach(({meta, path, store}, from, next) => {
         return next({path: '/'})
       }
       if (isLogin && (path === '/' || path === '/reg')) {
-        return next({path: '/user'})
+        return next({path: '/home'})
       }
     })
   next(vm => {

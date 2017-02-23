@@ -19,7 +19,7 @@ const actions = {
       data,
       () => {
         commit(type.USER_SIGNIN, data.user)
-        window.location = '/user'
+        window.location = '/home'
       },
       () => console.log('丢')
     )
