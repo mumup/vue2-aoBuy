@@ -9,13 +9,18 @@ export default {
     Vue.http.post('/apis/api/user_login', data)
       .then((rs) => {
         rs.status === 200 && rs.body.status === 0
-        ? cb(rs.body)
-        : errCb()
+          ? cb(rs.body)
+          : errCb()
       })
   },
   // 登出
   LoginOut: function () {
     return Vue.http.get('/apis/api/logoff')
+      .then((data) => {
+        if (data.status === 200) {
+          return data.body
+        }
+      })
   },
   // 登录状态检查
   LoginCheck: function () {
@@ -34,6 +39,10 @@ export default {
           return data.body
         }
       })
+  },
+  // HOME=》获取所有关键词
+  fetchKeyword: function () {
+    return Vue.http.get('/apis/api/fetchKeyword')
   },
   // 搜索工具=》获取最新数据
   GetNewData: function () {

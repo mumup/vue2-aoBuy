@@ -5,15 +5,20 @@ import api from '../../api'
 import * as type from '../mutation-type'
 
 const state = {
-  id: JSON.parse(localStorage.getItem('user')) || null
+  id: JSON.parse(localStorage.getItem('user')) || null,
+  keyword: [],
+  keywordLength: null
 }
 
 // getters
 const getters = {
-  id: state => state.id
+  id: state => state.id,
+  keyword: state => state.keyword,
+  keywordLength: state => state.keyword.length
 }
 
 const actions = {
+  // 登陆
   UserLogin: ({commit}, data) => {
     api.Login(
       data,
@@ -24,7 +29,7 @@ const actions = {
       () => console.log('丢')
     )
   },
-
+  // 登出
   UserLogout: ({commit}) => {
     api.LoginOut()
       .then(function (res) {
@@ -35,6 +40,15 @@ const actions = {
       })
       .catch(function (error) {
         console.log(error)
+      })
+  },
+  // 首页获取所有关键词
+  UserKeywordFetch: ({commit}) => {
+    api.fetchKeyword()
+      .then(function (res) {
+        if (res.status === 200) {
+          commit(type.USER_FETCH_KEYWORD, res.body)
+        }
       })
   }
 }
@@ -47,6 +61,9 @@ const mutations = {
   },
   [type.USER_SIGNOUT] (state) {
     state.isLogin = false
+  },
+  [type.USER_FETCH_KEYWORD] (state, _keyword) {
+    state.keyword = _keyword
   }
 }
 
