@@ -1,7 +1,10 @@
 <template>
   <div id="user" style="height: 100%">
     <view-box ref="viewBox">
-      <XHeader slot="header" :title="headTitle" :leftOptions="titleLeft" style="width:100%;position:absolute;left:0;top:0;z-index:100;"></XHeader>
+      <XHeader slot="header" :title="headTitle" :leftOptions="titleLeft"
+               style="width:100%;position:absolute;left:0;top:0;z-index:100;">
+        <a slot="right" v-show="feedback" @click="feedbackClick">添加</a>
+      </XHeader>
       <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
@@ -37,11 +40,18 @@
       Tabbar,
       TabbarItem
     },
-    methods: {},
+    methods: {
+      feedbackClick () {
+        alert('11111')
+      }
+    },
     computed: {
 //      ...mapGetters({
 //        leftOptions: 'leftOptions'
 //      }),
+      feedback () {
+        return this.$route.name === 'home'
+      },
       titleLeft () {
         return {
           showBack: !this.$route.meta.hideBack
@@ -59,6 +69,7 @@
   #vux_view_box_body {
     padding-top: 46px;
   }
+
   .weui_tabbar_item {
     text-decoration: none;
   }
