@@ -33,7 +33,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-  .weui_media_title, .weui_panel_hd, .weui_media_desc {
+  .weui-media-box__title, .weui-media-box__hd, .weui-media-box__desc {
     text-align: left;
   }
 </style>

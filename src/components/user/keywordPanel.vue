@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div v-if="listLength == 0">哈哈哈</div>
+    <div v-if="listLength == 0">没有关键词</div>
     <swipeout>
       <swipeout-item v-for="item in list" @on-open="handleEvents('on-open')">
         <div slot="right-menu">

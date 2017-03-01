@@ -10,15 +10,15 @@
       </transition>
       <Tabbar slot="bottom">
         <TabbarItem link="/home">
-          <div slot="icon" class="iconfont icon-zhuye" style="font-size: 20px;color: #888;"></div>
+          <div slot="icon" class="iconfont icon-zhuye" style="font-size: 22px;color: #888;"></div>
           <span slot="label">首页</span>
         </TabbarItem>
         <TabbarItem link="/tools">
-          <div slot="icon" class="iconfont icon-gongju" style="font-size: 22px;color: #888;"></div>
+          <div slot="icon" class="iconfont icon-gongju" style="font-size: 24px;color: #888;"></div>
           <span slot="label">工具</span>
         </TabbarItem>
         <TabbarItem link="/userCenter">
-          <div slot="icon" class="iconfont icon-yonghuzhongxin" style="font-size: 20px;color: #888;"></div>
+          <div slot="icon" class="iconfont icon-yonghuzhongxin" style="font-size: 22px;color: #888;"></div>
           <span slot="label">用户中心</span>
         </TabbarItem>
       </Tabbar>
@@ -68,6 +68,10 @@
 <style>
   #vux_view_box_body {
     padding-top: 46px;
+  }
+
+  .weui-tabbar__label {
+    line-height: 0.8!important;
   }
 
   .weui_tabbar_item {

@@ -47,15 +47,15 @@
 <style>
 
 
-  .weui_cells_title, .weui_cell {
+  .weui-cells__title, .weui-cell {
     text-align: left;
   }
 
-  .weui_cell {
+  .weui-cell {
     padding: 5px 15px!important;
   }
 
-  .weui_cell p {
+  .weui-cell p {
     margin: 0;
     padding: 10px 0;
   }
