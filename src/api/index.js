@@ -16,11 +16,6 @@ export default {
   // 登出
   LoginOut: function () {
     return Vue.http.get('/apis/api/logoff')
-      .then((data) => {
-        if (data.status === 200) {
-          return data.body
-        }
-      })
   },
   // 登录状态检查
   LoginCheck: function () {

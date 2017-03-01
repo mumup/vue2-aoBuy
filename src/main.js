@@ -4,6 +4,7 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import {LoadingPlugin, ToastPlugin} from 'vux'
+import moment from 'moment'
 import store from './store/index'
 import App from './App'
 import api from './api'
@@ -36,6 +37,16 @@ const routes = [
   },
   {path: '*', name: 'notFound', component: notFound, meta: {auth: false}}
 ]
+
+// moment格式化unix时间
+Vue.prototype.$moment = function (model, val, format) {
+  switch (model) {
+    case 'default':
+      return moment(val).format(format)
+    case 'unix':
+      return moment.unix(val).format(format)
+  }
+}
 
 const router = new VueRouter({
   mode: 'history',
