@@ -4,7 +4,13 @@
     <swipeout>
       <swipeout-item v-for="item in list" @on-open="handleEvents('on-open')">
         <div slot="right-menu">
-          <swipeout-button @click.native="deleteBtn(item.key_name)" type="warn" :width="160">删除</swipeout-button>
+          <template v-if="item.status === 1">
+            <swipeout-button @click.native="changeBtn(item.key_name, 0)" background-color="#f5cf60">停止</swipeout-button>
+          </template>
+          <template v-else>
+            <swipeout-button @click.native="changeBtn(item.key_name, 1)" background-color="#5fb4e0">开启</swipeout-button>
+          </template>
+          <swipeout-button @click.native="deleteBtn(item.key_name)" type="warn">删除</swipeout-button>
         </div>
         <div slot="content" class="k-panel clearfix">
           <div class="k-panel-left">
@@ -17,7 +23,7 @@
               <span class="status">状态：已开启</span>
             </template>
             <template v-else>
-              <span class="status">状态：已关闭</span>
+              <span class="status">状态：已停止</span>
             </template>
           </div>
         </div>
@@ -48,7 +54,21 @@
         return this.$moment('unix', val, 'YYYY-MM-DD hh:mm')
       },
       deleteBtn (type) {
-        console.log(type)
+        this.$http.get('/apis/api/delete_key?keyword=' + type)
+          .then((data) => {
+            this.$store.dispatch('UserKeywordFetch')
+          })
+      },
+      changeBtn (val, type) {
+        this.$http.post('/apis/api/change_status', {
+          keyword: val,
+          type: type
+        })
+          .then((data) => {
+            if (data.body.status === 0) {
+              this.$store.dispatch('UserKeywordFetch')
+            }
+          })
       },
       handleEvents (type) {
         console.log('event: ', type)
@@ -99,8 +119,8 @@
     float: right;
   }
 
-  .vux-swipeout-button-warn {
-  border-bottom: 5px solid #fbf9fe;
+  .vux-swipeout-button-box button {
+    border-bottom: 5px solid #fbf9fe;
   }
 
   .vux-swipeout-content {
