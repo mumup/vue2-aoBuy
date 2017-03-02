@@ -15,6 +15,8 @@ import tools from './components/user/tools'
 import userCenter from './components/user/userCenter'
 import Search from './components/user/search'
 import notFound from './components/notfound'
+const FastClick = require('fastclick')
+FastClick.attach(document.body)
 
 Vue.use(VueRouter)
 Vue.use(VueResource)

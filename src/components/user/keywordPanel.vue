@@ -4,7 +4,7 @@
     <swipeout>
       <swipeout-item v-for="item in list" @on-open="handleEvents('on-open')">
         <div slot="right-menu">
-          <swipeout-button @click.native="deleteBtn" type="warn" :width="160">删除</swipeout-button>
+          <swipeout-button @click.native="deleteBtn(item.key_name)" type="warn" :width="160">删除</swipeout-button>
         </div>
         <div slot="content" class="k-panel clearfix">
           <div class="k-panel-left">
@@ -48,7 +48,7 @@
         return this.$moment('unix', val, 'YYYY-MM-DD hh:mm')
       },
       deleteBtn (type) {
-        alert('11111')
+        console.log(type)
       },
       handleEvents (type) {
         console.log('event: ', type)
@@ -99,9 +99,9 @@
     float: right;
   }
 
-  /*.vux-swipeout-button-warn {*/
-  /*border-bottom: 3px solid #ccc;*/
-  /*}*/
+  .vux-swipeout-button-warn {
+  border-bottom: 5px solid #fbf9fe;
+  }
 
   .vux-swipeout-content {
     padding: 0 15px;
