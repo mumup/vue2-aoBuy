@@ -35,10 +35,27 @@ export default {
         }
       })
   },
+
   // HOME=》获取所有关键词
   fetchKeyword: function () {
     return Vue.http.get('/apis/api/fetchKeyword')
   },
+
+  //  添加关键词
+  addKeyword: function (keyword) {
+    return Vue.http.get('/apis/api/add_key?keyword=' + keyword)
+  },
+
+  //  删除关键词
+  deleteKeyword: function (keyword) {
+    return Vue.http.get('/apis/api/delete_key?keyword=' + keyword)
+  },
+
+  //  改变关键词状态
+  changeKeyStatus: function (status) {
+    return Vue.http.post('/apis/api/change_status', status)
+  },
+
   // 搜索工具=》获取最新数据
   GetNewData: function () {
     return Vue.http.get('/apis/api/getNew')

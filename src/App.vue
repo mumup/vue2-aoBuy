@@ -2,7 +2,7 @@
   <div id="app">
     <router-view></router-view>
     <Loading :value="isLoading"></Loading>
-    <toast :value="isToast"></toast>
+    <toast :value="isToast.isShow" :type="isToast.type" :text="isToast.text"></toast>
   </div>
 </template>
 

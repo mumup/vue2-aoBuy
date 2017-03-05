@@ -92,7 +92,6 @@
   .login-wrap {
     width: 300px;
     border-radius: 5px;
-    background: #fff;
     margin: 10% auto 0 auto;
     padding: 20px;
   }
@@ -109,6 +108,7 @@
 
   .item input {
     border: 0;
+    background: #fbf9fe;
     width: 220px;
     height: 35px;
     outline: none;

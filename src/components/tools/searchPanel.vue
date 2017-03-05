@@ -2,7 +2,7 @@
   <div class="box">
     <div v-for="item in list" class="goods-card">
       <div class="goods-head clearfix">
-        <img :src="item.article_pic_ur" alt="">
+        <img :src="item.article_pic_url" alt="图">
         <i class="goods-channel">{{ item.channel }}</i>
       </div>
       <div class="goods-info">

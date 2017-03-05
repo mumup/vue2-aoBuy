@@ -5,7 +5,11 @@ import * as type from '../mutation-type'
 
 const state = {
   isLoading: false,
-  isToast: false
+  isToast: {
+    isShow: false,
+    type: 'success',
+    text: ''
+  }
 }
 
 const getters = {
@@ -13,7 +17,14 @@ const getters = {
   isToast: state => state.isToast
 }
 
-const actions = {}
+const actions = {
+  showToast: ({commit}, status) => {
+    commit(type.UPDATE_TOAST, status)
+    setTimeout(() => {
+      commit(type.UPDATE_TOAST, {isShow: false})
+    }, status.time || 2000)
+  }
+}
 
 const mutations = {
   [type.UPDATE_LOADING] (state, status) {

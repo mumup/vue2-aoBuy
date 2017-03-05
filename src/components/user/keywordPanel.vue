@@ -1,14 +1,20 @@
 <template>
   <div class="box">
-    <div v-if="listLength == 0">没有关键词</div>
+    <div v-if="listLength == 0" class="empty">
+      <div class="empty-pic">
+        <img src="../../assets/empty.png" alt="">
+      </div>
+      <p>empty~</p>
+      <!--<router-link to="addKeyword">立即添加~</router-link>-->
+    </div>
     <swipeout>
-      <swipeout-item v-for="item in list" @on-open="handleEvents('on-open')">
+      <swipeout-item v-for="(item, index) in list" @on-open="handleEvents('on-open')">
         <div slot="right-menu">
           <template v-if="item.status === 1">
-            <swipeout-button @click.native="changeBtn(item.key_name, 0)" background-color="#f5cf60">停止</swipeout-button>
+            <swipeout-button @click.native="changeBtn(item.key_name, index, 0)" background-color="#f5cf60">停止</swipeout-button>
           </template>
           <template v-else>
-            <swipeout-button @click.native="changeBtn(item.key_name, 1)" background-color="#5fb4e0">开启</swipeout-button>
+            <swipeout-button @click.native="changeBtn(item.key_name, index, 1)" background-color="#5fb4e0">开启</swipeout-button>
           </template>
           <swipeout-button @click.native="deleteBtn(item.key_name)" type="warn">删除</swipeout-button>
         </div>
@@ -53,22 +59,18 @@
         if (!val) return '无'
         return this.$moment('unix', val, 'YYYY-MM-DD hh:mm')
       },
-      deleteBtn (type) {
-        this.$http.get('/apis/api/delete_key?keyword=' + type)
-          .then((data) => {
-            this.$store.dispatch('UserKeywordFetch')
-          })
+      fetchData: function () {
+        this.$store.dispatch('UserKeywordFetch')
       },
-      changeBtn (val, type) {
-        this.$http.post('/apis/api/change_status', {
+      deleteBtn (type) {
+        this.$store.dispatch('UserDeleteKeyword', type)
+      },
+      changeBtn (val, index, type) {
+        this.$store.dispatch('UserKeywordStatus', {
           keyword: val,
+          index: index,
           type: type
         })
-          .then((data) => {
-            if (data.body.status === 0) {
-              this.$store.dispatch('UserKeywordFetch')
-            }
-          })
       },
       handleEvents (type) {
         console.log('event: ', type)
@@ -85,6 +87,13 @@
 
 
 <style scoped>
+  .empty {
+    font-size: 22px;
+  }
+
+  .empty-pic {
+  }
+
   .key-name {
     font-size: 22px;
   }
@@ -104,7 +113,7 @@
   .k-panel {
     text-align: left;
     padding: 15px;
-    border-bottom: 5px solid #fbf9fe;
+    border-bottom: 10px solid #fbf9fe;
   }
 
   .k-panel span {

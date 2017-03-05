@@ -3,7 +3,7 @@
     <view-box ref="viewBox">
       <XHeader slot="header" :title="headTitle" :leftOptions="titleLeft"
                style="width:100%;position:absolute;left:0;top:0;z-index:100;">
-        <a slot="right" v-show="feedback" @click="feedbackClick">添加</a>
+        <router-link slot="right" v-show="feedback" to="addKeyword">添加</router-link>
       </XHeader>
       <transition name="fade" mode="out-in">
         <router-view></router-view>
