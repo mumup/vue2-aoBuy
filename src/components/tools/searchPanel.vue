@@ -8,6 +8,7 @@
       <div class="goods-info">
         <p class="goods-txt">{{ item.goods }}</p>
         <span class="goods-price">{{ item.price }}</span>
+        <a class="article-btn" :href="'http://www.smzdm.com/p/' + item.articleid" target="_blank">原文</a>
       </div>
     </div>
   </div>
@@ -22,6 +23,7 @@
     data () {
       return {}
     },
+    components: {},
     methods: {},
     computed: {}
   }
@@ -33,11 +35,18 @@
     font-style: normal;
   }
 
-  .box {
-
+  .article-btn {
+    position: absolute;
+    right: .8rem;
+    bottom: .8rem;
+    border: 2px solid #ccc;
+    padding: 3px 15px;
+    border-radius: 20px;
+    color: #35495e;
   }
 
   .goods-card {
+    position: relative;
     display: flex;
     padding: 15px;
     border-bottom: 3px solid #e4e1e1;
@@ -52,6 +61,9 @@
     width: 94px;
     background: #ccc;
     opacity: .85;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .goods-head {
