@@ -6,3 +6,10 @@ node_modules
 
 # dist
 dist
+
+# test
+test/e2e/reports/*
+selenium-debug.log
+
+# logs
+*.log
