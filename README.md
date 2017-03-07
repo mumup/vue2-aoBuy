@@ -3,7 +3,7 @@
 > A Vue.js project
  <p align="center"><a href="https://vuejs.org" target="_blank"><img width="100"src="http://vue.pmumu.com/github/Aobuy.png"></a></p>
  <p align="center">
- <a href="https://github.com/mumup"><img src=" https://travis-ci.org/mumup/vue2-aoBuy.svg?branch=master" alt="AoBuy"></a>
+ <a href="https://github.com/mumup"><img src="https://travis-ci.org/mumup/vue2-aoBuy.svg?branch=master" alt="AoBuy"></a>
  <a href="https://github.com/mumup"><img src="https://img.shields.io/badge/AoBuy-v1.0-orange.svg" alt="AoBuy"></a>
  <a href="https://github.com/mumup"><img src="https://img.shields.io/npm/v/vue.svg" alt="Version"></a>
 </p>
