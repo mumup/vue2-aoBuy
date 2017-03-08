@@ -26,7 +26,7 @@
     },
     computed: {
       ...mapGetters({
-        user: 'id'
+        userInfo: 'userInfo'
       })
     },
     components: {

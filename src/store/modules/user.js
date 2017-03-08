@@ -5,14 +5,14 @@ import api from '../../api'
 import * as type from '../mutation-type'
 
 const state = {
-  id: JSON.parse(localStorage.getItem('user')) || null,
+  userInfo: JSON.parse(localStorage.getItem('userInfo')) || {},
   keyword: [],
   keywordLength: null
 }
 
 // getters
 const getters = {
-  id: state => state.id,
+  userInfo: state => state.userInfo,
   keyword: state => state.keyword,
   keywordLength: state => state.keyword.length
 }
@@ -22,9 +22,10 @@ const actions = {
   UserLogin: ({commit}, data) => {
     api.Login(
       data,
-      () => {
-        commit(type.USER_SIGNIN, data.user)
-        window.location = '/home'
+      (res) => {
+        console.log(res)
+        commit(type.USER_SIGNIN, res.userInfo)
+        console.log('1')
       },
       () => console.log('丢')
     )
@@ -96,10 +97,10 @@ const actions = {
 }
 
 const mutations = {
-  [type.USER_SIGNIN] (state, id) {
-    localStorage.setItem('user', JSON.stringify(id))
+  [type.USER_SIGNIN] (state, userInfo) {
     state.isLogin = true
-    state.id = id
+    localStorage.userInfo = userInfo
+    state.userInfo = userInfo
   },
   [type.USER_SIGNOUT] (state) {
     state.isLogin = false
