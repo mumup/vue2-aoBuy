@@ -16,6 +16,7 @@
 //   }
 // }
 
+
 // Account setting.
 const accountConfig = {
   username: 'test',
@@ -25,6 +26,7 @@ const accountConfig = {
 module.exports = {
   'AoBuy Login Test': function (client) {
     const devServer = client.globals.devServerURL
+
     client.url(devServer)
 
     // Page Init.
@@ -55,3 +57,7 @@ module.exports = {
     client.end()
   }
 }
+
+
+
+

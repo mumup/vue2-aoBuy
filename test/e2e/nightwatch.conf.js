@@ -13,7 +13,7 @@ module.exports = {
     host: '127.0.0.1',
     port: 4444,
     cli_args: {
-      'webdriver.chrome.driver': require('chromedriver').path
+      'webdriver.phantomjs.driver': require('phantomjs').path
     }
   },
 
@@ -24,6 +24,14 @@ module.exports = {
       silent: true,
       globals: {
         devServerURL: 'http://localhost:' + (process.env.PORT || config.dev.port)
+      }
+    },
+
+    phantomjs: {
+      desiredCapabilities: {
+        browserName: 'phantomjs',
+        javascriptEnabled: true,
+        acceptSslCerts: true
       }
     },
 
