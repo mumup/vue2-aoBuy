@@ -31,6 +31,7 @@
   @import "assets/css/normalize.css";
   @import '~vux/src/styles/1px.less';
   @import "//at.alicdn.com/t/font_g9revw5a2tucv7vi.css";
+  @import "~assets/css/login.scss";
 
   html, body {
     height: 100%;

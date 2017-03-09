@@ -4,6 +4,10 @@
 import Vue from 'vue'
 
 export default {
+  //  注册
+  Register: function (data) {
+    return Vue.http.post('/apis/api/user_reg', data)
+  },
   // 登录
   Login: function (data, cb, errCb) {
     Vue.http.post('/apis/api/user_login', data)

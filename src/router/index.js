@@ -3,6 +3,8 @@
  * Created by pmumu on 2017/3/4.
  */
 const Login = r => require.ensure([], () => r(require('./../components/user/login')), 'Login')
+const Register = r => require.ensure([], () => r(require('./../components/user/register')), 'Login')
+
 const Home = r => require.ensure([], () => r(require('./../components/user/home')), 'Home')
 const Index = r => require.ensure([], () => r(require('./../components/user/index')), 'Home')
 const addKeyword = r => require.ensure([], () => r(require('./../components/user/addKeyword')), 'Home')
@@ -14,7 +16,13 @@ import notFound from './../components/notfound'
 import reward from './../components/reward'
 
 export default [
-  {path: '/', name: 'index', component: Login, meta: {auth: false}},
+  {
+    path: '/',
+    name: 'index',
+    component: Login,
+    meta: {auth: false}
+  },
+  {path: '/register', name: 'register', component: Register, meta: {auth: false, title: '注册', hideBack: true}},
   {
     path: '/user',
     name: 'user',

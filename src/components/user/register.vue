@@ -1,5 +1,5 @@
 <template>
-  <div id="#login">
+  <div id="#register">
     <div class="login-wrap">
       <div class="login-logo">
         <img src="../../assets/logo.png" alt="哈哈哈哈" class="logo">
@@ -26,24 +26,31 @@
                    name="password"
                    type="password">
           </div>
-          <button id="login-btn" :class="{ error : isValid }" class="login-btn" type="submit">{{btn}}</button>
-          <div>
-            <router-link to="register" class="user-reg">立即注册</router-link>
+          <div class="item">
+            <label for="mail"
+                   :class="{ labelFocus: mail.focus }">邮箱</label>
+            <input id="mail" :class="{ inputFocus: mail.focus }"
+                   v-model="mail.val"
+                   @blur="[checkUser,blur('mail')]"
+                   @focus='focus("mail")'
+                   name="mail"
+                   type="email">
           </div>
+          <button id="login-btn" class="login-btn" type="submit">立即注册</button>
         </form>
+        <router-link to="/" class="user-reg">返回</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  //  import {mapGetters} from 'vuex'
+  //  import { debounce } from 'vux'
   export default {
-    name: 'login',
+    name: 'register',
     data () {
       return {
-        isValid: false,
-        btn: '登陆',
         user: {
           val: null,
           error: false,
@@ -53,15 +60,25 @@
           val: null,
           error: false,
           focus: false
+        },
+        mail: {
+          val: null,
+          error: false,
+          focus: false
         }
       }
     },
-    computed: {
-      ...mapGetters({
-        isLogin: 'isLogin'
-      })
-    },
+    computed: {},
     methods: {
+      submit: function () {
+        let data = {
+          user: this.user.val,
+          password: this.password.val,
+          email: this.mail.val
+        }
+        console.log(data)
+        this.$store.dispatch('UserReg', data)
+      },
       checkUser: function () {
         console.log(this.user.val)
       },
@@ -70,19 +87,7 @@
       },
       blur: function ($select) {
         this[$select].focus = this[$select].val
-      },
-      submit: function () {
-        let user = {
-          user: this.user.val,
-          password: this.password.val
-        }
-        this.$store.dispatch('UserLogin', user)
       }
     }
   }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-
-</style>

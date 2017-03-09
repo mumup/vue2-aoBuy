@@ -19,6 +19,22 @@ const getters = {
 
 const actions = {
   // 登陆
+  UserReg: ({dispatch, commit}, data) => {
+    api.Register(data)
+      .then((res) => {
+        if (res.status === 200 && res.body.status === 1) {
+          dispatch('showToast', {
+            isShow: true,
+            text: '注册成功'
+          })
+        } else {
+          dispatch('showToast', {
+            isShow: true,
+            text: res.body.data
+          })
+        }
+      })
+  },
   UserLogin: ({dispatch, commit}, data) => {
     api.Login(
       data,
