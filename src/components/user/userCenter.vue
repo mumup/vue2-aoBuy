@@ -1,12 +1,12 @@
 <template>
   <div id="userCenter">
     <group title="用户信息">
-      <cell title="用户名" :value="user"></cell>
-      <cell title="邮箱" value="pmumuv5@163.com"></cell>
+      <cell title="用户名" :value="userInfo.id"></cell>
+      <cell title="邮箱" :value="userInfo.email"></cell>
       <cell title="修改密码" :link="{path:'/demo'}"></cell>
     </group>
     <group title="关于">
-      <cell title="打赏" :link="{path:'/demo'}"></cell>
+      <cell title="打赏" :link="{path:'/reward'}"></cell>
       <cell title="反馈BUG"></cell>
       <cell title="关于作者" :link="{path:'/demo'}"></cell>
     </group>

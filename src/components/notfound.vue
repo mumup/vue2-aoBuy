@@ -4,7 +4,3 @@
     <span>power by vue.js</span>
   </div>
 </template>
-
-<style scoped>
-
-</style>

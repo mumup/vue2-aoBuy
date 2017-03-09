@@ -10,6 +10,7 @@ import userCenter from './../components/user/userCenter'
 import Search from './../components/tools/search'
 import addKeyword from './../components/user/addKeyword'
 import notFound from './../components/notfound'
+import reward from './../components/reward'
 
 export default [
   {path: '/', name: 'index', component: Login, meta: {auth: false}},
@@ -23,7 +24,8 @@ export default [
       {path: '/tools', name: 'tools', component: tools, meta: {auth: true, title: '工具'}},
       {path: '/userCenter', name: 'userCenter', component: userCenter, meta: {auth: true, title: '用户中心'}},
       {path: '/search', name: 'search', component: Search, meta: {auth: true, title: '搜索'}},
-      {path: '/addKeyword', name: 'addKeyword', component: addKeyword, meta: {auth: true, title: '添加关注'}}
+      {path: '/addKeyword', name: 'addKeyword', component: addKeyword, meta: {auth: true, title: '添加关注'}},
+      {path: '/reward', name: 'reward', component: reward, meta: {auth: false, title: '打赏'}}
     ]
   },
   {path: '*', name: 'notFound', component: notFound, meta: {auth: false}}

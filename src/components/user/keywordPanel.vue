@@ -129,7 +129,7 @@
   }
 
   .vux-swipeout-button-box button {
-    border-bottom: 5px solid #fbf9fe;
+    border-bottom: 10px solid #fbf9fe;
   }
 
   .vux-swipeout-content {

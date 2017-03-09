@@ -23,9 +23,8 @@ const actions = {
     api.Login(
       data,
       (res) => {
-        console.log(res)
         commit(type.USER_SIGNIN, res.userInfo)
-        console.log('1')
+        window.location = '/home'
       },
       () => console.log('丢')
     )
@@ -99,11 +98,13 @@ const actions = {
 const mutations = {
   [type.USER_SIGNIN] (state, userInfo) {
     state.isLogin = true
-    localStorage.userInfo = userInfo
+    localStorage.userInfo = JSON.stringify(userInfo)
     state.userInfo = userInfo
   },
   [type.USER_SIGNOUT] (state) {
     state.isLogin = false
+    state.userInfo = ''
+    localStorage.removeItem('userInfo')
   },
   [type.USER_FETCH_KEYWORD] (state, _keyword) {
     state.keyword = _keyword

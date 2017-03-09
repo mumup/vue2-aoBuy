@@ -2,7 +2,7 @@
   <div class="box">
     <div v-for="item in list" class="goods-card">
       <div class="goods-head clearfix">
-        <img :src="item.article_pic_url" alt="图">
+        <img :src="item.article_pic_url || nopic" alt="图">
         <i class="goods-channel">{{ item.channel }}</i>
       </div>
       <div class="goods-info">
@@ -15,13 +15,16 @@
 </template>
 
 <script>
+  import nopic from '../../assets/images/nopic.jpg'
   export default {
     name: 'searchPanel',
     props: {
       list: Array
     },
     data () {
-      return {}
+      return {
+        nopic: nopic
+      }
     },
     components: {},
     methods: {},
