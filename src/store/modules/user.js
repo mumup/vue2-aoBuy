@@ -5,28 +5,37 @@ import api from '../../api'
 import * as type from '../mutation-type'
 
 const state = {
-  userInfo: JSON.parse(localStorage.getItem('userInfo')) || {},
+  userInfo: {},
   keyword: [],
   keywordLength: null
 }
 
 // getters
 const getters = {
-  userInfo: state => state.userInfo,
+  userInfo: state => JSON.parse(localStorage.getItem('userInfo')) || '',
   keyword: state => state.keyword,
   keywordLength: state => state.keyword.length
 }
 
 const actions = {
   // 登陆
-  UserLogin: ({commit}, data) => {
+  UserLogin: ({dispatch, commit}, data) => {
     api.Login(
       data,
       (res) => {
+        try {
+          localStorage.removeItem('userInfo')
+        } catch (_) {
+          alert('本地储存写入错误，若为safari浏览器请关闭隐身模式浏览。')
+        }
         commit(type.USER_SIGNIN, res.userInfo)
         window.location = '/home'
       },
-      () => console.log('丢')
+      (res) => dispatch('showToast', {
+        isShow: true,
+        type: 'warn',
+        text: res.data
+      })
     )
   },
   // 登出
@@ -66,7 +75,7 @@ const actions = {
       })
   },
   // 添加关键词
-  UserAddKeyword: ({dispatch, commit}, val) => {
+  UserAddKeyword: ({dispatch}, val) => {
     api.addKeyword(val)
       .then(function (res) {
         if (res.status === 200) {
@@ -98,8 +107,12 @@ const actions = {
 const mutations = {
   [type.USER_SIGNIN] (state, userInfo) {
     state.isLogin = true
-    localStorage.userInfo = JSON.stringify(userInfo)
     state.userInfo = userInfo
+    try {
+      localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    } catch (_) {
+      alert('隐身模式下可能出现BUG,请尽量在正常模式下访问')
+    }
   },
   [type.USER_SIGNOUT] (state) {
     state.isLogin = false

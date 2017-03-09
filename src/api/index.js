@@ -10,7 +10,7 @@ export default {
       .then((rs) => {
         rs.status === 200 && rs.body.status === 0
           ? cb(rs.body)
-          : errCb()
+          : errCb(rs.body)
       })
   },
   // 登出

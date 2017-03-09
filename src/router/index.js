@@ -2,13 +2,14 @@
  * 路由路由
  * Created by pmumu on 2017/3/4.
  */
-import Index from './../components/user/index'
-import Login from './../components/user/login'
-import Home from './../components/user/home'
+const Login = r => require.ensure([], () => r(require('./../components/user/login')), 'Login')
+const Home = r => require.ensure([], () => r(require('./../components/user/home')), 'Home')
+const Index = r => require.ensure([], () => r(require('./../components/user/index')), 'Home')
+const addKeyword = r => require.ensure([], () => r(require('./../components/user/addKeyword')), 'Home')
+
 import tools from './../components/tools/tools'
 import userCenter from './../components/user/userCenter'
 import Search from './../components/tools/search'
-import addKeyword from './../components/user/addKeyword'
 import notFound from './../components/notfound'
 import reward from './../components/reward'
 

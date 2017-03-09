@@ -5,7 +5,7 @@
                style="width:100%;position:absolute;left:0;top:0;z-index:100;">
         <router-link slot="right" v-show="feedback" to="addKeyword">添加</router-link>
       </XHeader>
-      <transition name="fade" mode="out-in">
+      <transition name="bounce" mode="out-in">
         <router-view></router-view>
       </transition>
       <Tabbar slot="bottom">
@@ -40,11 +40,7 @@
       Tabbar,
       TabbarItem
     },
-    methods: {
-      feedbackClick () {
-        alert('11111')
-      }
-    },
+    methods: {},
     computed: {
 //      ...mapGetters({
 //        leftOptions: 'leftOptions'
@@ -78,11 +74,32 @@
     text-decoration: none;
   }
 
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
+  .bounce-enter-active {
+    animation: bounce-in .3s;
   }
-
-  .fade-enter, .fade-leave-active {
-    opacity: 0;
+  .bounce-leave-active {
+    animation: bounce-out .3s;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0.9);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes bounce-out {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(0.9);
+    }
   }
 </style>
