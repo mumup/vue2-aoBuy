@@ -57,7 +57,7 @@
     methods: {
       time: function (val) {
         if (!val) return '无'
-        return this.$moment('unix', val, 'YYYY-MM-DD hh:mm')
+        return this.$moment('unix', val, 'YYYY-MM-DD HH:mm')
       },
       fetchData: function () {
         this.$store.dispatch('UserKeywordFetch')
