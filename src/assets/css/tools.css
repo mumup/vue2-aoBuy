@@ -1,0 +1,48 @@
+.empty {
+  font-size: 22px;
+}
+
+.empty-pic {
+}
+
+.key-name {
+  font-size: 22px;
+}
+
+.hit, .last-hit {
+  color: #bbb;
+}
+
+.last-hit {
+  margin-top: 10px;
+}
+
+.status {
+  margin-top: 10px;
+}
+
+.k-panel {
+  text-align: left;
+  padding: 15px;
+  border-bottom: 10px solid #fbf9fe;
+}
+
+.k-panel span {
+  display: block;
+}
+
+.k-panel-left {
+  float: left;
+}
+
+.k-panel-right {
+  float: right;
+}
+
+.vux-swipeout-button-box button {
+  border-bottom: 10px solid #fbf9fe;
+}
+
+.vux-swipeout-content {
+  padding: 0 15px;
+}

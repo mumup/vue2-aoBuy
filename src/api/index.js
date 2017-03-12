@@ -5,9 +5,8 @@ import Vue from 'vue'
 
 export default {
   //  注册
-  Register: function (data) {
-    return Vue.http.post('/apis/api/user_reg', data)
-  },
+  Register: data => Vue.http.post('/apis/api/user_reg', data),
+
   // 登录
   Login: function (data, cb, errCb) {
     Vue.http.post('/apis/api/user_login', data)
@@ -18,9 +17,8 @@ export default {
       })
   },
   // 登出
-  LoginOut: function () {
-    return Vue.http.get('/apis/api/logoff')
-  },
+  LoginOut: () => Vue.http.get('/apis/api/logoff'),
+
   // 登录状态检查
   LoginCheck: function () {
     return Vue.http.get('/apis/api/loginCheck')
@@ -41,24 +39,16 @@ export default {
   },
 
   // HOME=》获取所有关键词
-  fetchKeyword: function () {
-    return Vue.http.get('/apis/api/fetchKeyword')
-  },
+  fetchKeyword: () => Vue.http.get('/apis/api/fetchKeyword'),
 
   //  添加关键词
-  addKeyword: function (keyword) {
-    return Vue.http.get('/apis/api/add_key?keyword=' + keyword)
-  },
+  addKeyword: keyword => Vue.http.get('/apis/api/add_key?keyword=' + keyword),
 
   //  删除关键词
-  deleteKeyword: function (keyword) {
-    return Vue.http.get('/apis/api/delete_key?keyword=' + keyword)
-  },
+  deleteKeyword: keyword => Vue.http.get('/apis/api/delete_key?keyword=' + keyword),
 
   //  改变关键词状态
-  changeKeyStatus: function (status) {
-    return Vue.http.post('/apis/api/change_status', status)
-  },
+  changeKeyStatus: status => Vue.http.post('/apis/api/change_status', status),
 
   // 搜索工具=》获取最新数据
   GetNewData: function () {
@@ -70,12 +60,23 @@ export default {
       })
   },
   // 搜索功能
-  GetSearchData: function (word) {
+  GetSearchData: word => {
     return Vue.http.get('/apis/api/s?word=' + word)
-      .then(function (data) {
+      .then(data => {
         if (data.status === 200) {
           return data.body
         }
       })
-  }
+  },
+
+  //  添加签到账号
+  addSignAccount: data => Vue.http.get('apis/api/addSignAccount', {params: data}),
+
+  //  获取签到列表
+  getSignList: data => Vue.http.get('apis/api/getSignList'),
+
+  //  删除签到账号
+  deleteSignAccount: ac => Vue.http.get('apis/api/deleteSign', {params: ac})
+
 }
+

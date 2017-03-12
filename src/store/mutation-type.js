@@ -17,3 +17,6 @@ export const USER_FETCH_KEYWORD = 'USER_FETCH_KEYWORD' //  拿关键词
 export const USER_ADD_KEYWORD = 'USER_ADD_KEYWORD' //   添加关键词
 export const USER_DELETE_KEYWORD = 'USER_DELETE_KEYWORD' //   删除关键词
 export const USER_KEYWORD_STATUS = 'USER_KEYWORD_STATUS'  //    改变状态
+
+export const GET_SIGN_LIST = 'GET_SIGN_LIST' //   获取签到列表
+export const DELETE_SIGN = 'DELETE_SIGN' //   删除签到账号

@@ -8,7 +8,7 @@
       <!--<router-link to="addKeyword">立即添加~</router-link>-->
     </div>
     <swipeout>
-      <swipeout-item v-for="(item, index) in list" @on-open="handleEvents('on-open')">
+      <swipeout-item v-for="(item, index) in list">
         <div slot="right-menu">
           <template v-if="item.status === 1">
             <swipeout-button @click.native="changeBtn(item.key_name, index, 0)" background-color="#f5cf60">停止</swipeout-button>
@@ -71,9 +71,6 @@
           index: index,
           type: type
         })
-      },
-      handleEvents (type) {
-        console.log('event: ', type)
       }
     },
     computed: {

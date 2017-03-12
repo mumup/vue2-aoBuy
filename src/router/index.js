@@ -9,9 +9,11 @@ const Home = r => require.ensure([], () => r(require('./../components/user/home'
 const Index = r => require.ensure([], () => r(require('./../components/user/index')), 'Home')
 const addKeyword = r => require.ensure([], () => r(require('./../components/user/addKeyword')), 'Home')
 
+import addSign from './../components/tools/addSign'
 import tools from './../components/tools/tools'
 import userCenter from './../components/user/userCenter'
 import Search from './../components/tools/search'
+import Signer from './../components/tools/signer'
 import notFound from './../components/notfound'
 import reward from './../components/reward'
 
@@ -34,6 +36,8 @@ export default [
       {path: '/userCenter', name: 'userCenter', component: userCenter, meta: {auth: true, title: '用户中心'}},
       {path: '/search', name: 'search', component: Search, meta: {auth: true, title: '搜索'}},
       {path: '/addKeyword', name: 'addKeyword', component: addKeyword, meta: {auth: true, title: '添加关注'}},
+      {path: '/signer', name: 'signer', component: Signer, meta: {auth: true, title: '签到'}},
+      {path: '/addSign', name: 'addSign', component: addSign, meta: {auth: true, title: '添加签到'}},
       {path: '/reward', name: 'reward', component: reward, meta: {auth: false, title: '打赏'}}
     ]
   },

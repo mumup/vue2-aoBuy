@@ -67,7 +67,7 @@
   }
 
   .weui-tabbar__label {
-    line-height: 0.8!important;
+    line-height: 0.8 !important;
   }
 
   .weui_tabbar_item {
@@ -77,9 +77,11 @@
   .bounce-enter-active {
     animation: bounce-in .3s;
   }
+
   .bounce-leave-active {
     animation: bounce-out .3s;
   }
+
   @keyframes bounce-in {
     0% {
       transform: scale(0.9);
@@ -91,6 +93,7 @@
       transform: scale(1);
     }
   }
+
   @keyframes bounce-out {
     0% {
       transform: scale(1);

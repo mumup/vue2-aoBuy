@@ -16,8 +16,9 @@
           desc: '检查关键词，寻找最近优惠',
           url: '/search'
         },
-          {title: '开启短信提醒', src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', desc: '增加短信提醒，最快速度买买买'},
-          {title: '大妈自动签到', src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', desc: '自动签到,升级杠杠的'}]
+          {title: '大妈自动签到', src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', desc: '自动签到,升级杠杠的', url: '/signer'},
+          {title: '开启短信提醒', src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', desc: '增加短信提醒，最快速度买买买'}
+        ]
       }
     },
     components: {

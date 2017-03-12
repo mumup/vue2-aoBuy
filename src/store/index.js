@@ -7,7 +7,7 @@ import * as actions from './actions'
 import * as getters from './getters'
 import User from './modules/user'
 import Dialog from './modules/dialog'
-import Search from './modules/search'
+import Search from './modules/tools'
 
 Vue.use(Vuex)
 
