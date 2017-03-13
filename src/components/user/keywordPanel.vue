@@ -2,7 +2,7 @@
   <div class="box">
     <div v-if="listLength == 0" class="empty">
       <div class="empty-pic">
-        <img src="../../assets/empty.png" alt="">
+        <img src="../../assets/images/empty.png" alt="">
       </div>
       <p>empty~</p>
       <!--<router-link to="addKeyword">立即添加~</router-link>-->
@@ -26,10 +26,10 @@
           <div class="k-panel-right">
             <span class="hit">命中：{{ item.hit_counts }}</span>
             <template v-if="item.status === 1">
-              <span class="status">状态：已开启</span>
+              <span class="status">状态：开启</span>
             </template>
             <template v-else>
-              <span class="status">状态：已停止</span>
+              <span class="status">状态：停止</span>
             </template>
           </div>
         </div>
@@ -57,7 +57,7 @@
     methods: {
       time: function (val) {
         if (!val) return '无'
-        return this.$moment('unix', val, 'YYYY-MM-DD HH:mm')
+        return this.$moment('unix', val, 'MM-DD HH:mm')
       },
       fetchData: function () {
         this.$store.dispatch('UserKeywordFetch')

@@ -3,10 +3,10 @@
     <div class="box">
       <div v-if="listLength == 0" class="empty">
         <div class="empty-pic">
-          <img src="../../assets/empty.png" alt="">
+          <img src="~assets/images/empty.png" alt="">
         </div>
         <p>empty~</p>
-        <router-link to="addSign">立即添加~</router-link>
+        <router-link to="addSign" class="add-now">立即添加~</router-link>
       </div>
       <div class="signer-tips" v-if="listLength != 0">温馨提示：程序会在每天10.24签到</div>
       <swipeout>
@@ -19,18 +19,17 @@
           <div slot="content" class="signer-wrap clearfix">
             <div class="signer-box">
                 <span class="flex-item">
-                  账号：{{item.user}}
-                </span>
-              <span class="flex-item">
-                  等级：{{item.rank || '未知'}}
+                  大妈账号：{{item.user}}
                 </span>
             </div>
             <div class="signer-box">
                 <span class="flex-item">
                   连续签到：{{item.checkin_num || '未知'}}天
                 </span>
+            </div>
+            <div class="signer-box">
               <span class="flex-item">
-                  上次签到：{{time(item.rank)}}
+                  上次签到：{{time(item.last_sign)}}
                 </span>
             </div>
           </div>
@@ -60,7 +59,7 @@
       },
       time: function (val) {
         if (!val) return '无'
-        return this.$moment('unix', val, 'YYYY-MM-DD HH:mm')
+        return this.$moment('unix', val, 'MM-DD HH:mm')
       }
     },
     computed: {
@@ -79,6 +78,11 @@
 
 
 <style>
+  .add-now {
+    font-size: 18px;
+    color: #9d9d9d;
+  }
+
   .signer-wrap {
     padding: 10px 15px;
   }
@@ -89,6 +93,7 @@
   }
 
   .signer-box {
+    text-align: left;
     display: flex;
   }
 

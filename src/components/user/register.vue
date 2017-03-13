@@ -2,7 +2,7 @@
   <div id="#register">
     <div class="login-wrap">
       <div class="login-logo">
-        <img src="../../assets/logo.png" alt="哈哈哈哈" class="logo">
+        <img src="../../assets/images/logo.png" alt="哈哈哈哈" class="logo">
         <h1>AoBuy</h1>
       </div>
       <div class="login-from">
