@@ -9,6 +9,7 @@
         <p class="goods-txt">{{ item.goods }}</p>
         <span class="goods-price">{{ item.price }}</span>
         <a class="article-btn" :href="'http://www.smzdm.com/p/' + item.articleid" target="_blank">原文</a>
+        <div class="goods-time">{{ item.time }}</div>
       </div>
     </div>
   </div>
@@ -53,6 +54,10 @@
     display: flex;
     padding: 15px;
     border-bottom: 3px solid #e4e1e1;
+  }
+
+  .goods-time {
+    color: #ccc;
   }
 
   .goods-channel {

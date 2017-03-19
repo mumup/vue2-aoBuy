@@ -34,7 +34,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach(({meta, path, store}, from, next) => {
-  let {auth = true} = meta                    //  坑
+  let {auth = true} = meta
 
   api.LoginCheck()
     .then((res) => {

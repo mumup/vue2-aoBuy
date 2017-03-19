@@ -29,15 +29,15 @@ export default [
     path: '/user',
     name: 'user',
     component: Index,
-    meta: {auth: true, title: 'AoBuy', hideBack: true},
+    meta: {title: 'AoBuy', hideBack: true},
     children: [                            //   嵌套路由
-      {path: '/home', name: 'home', component: Home, meta: {auth: true, title: 'AoBuy', hideBack: true}},
-      {path: '/tools', name: 'tools', component: tools, meta: {auth: true, title: '工具'}},
-      {path: '/userCenter', name: 'userCenter', component: userCenter, meta: {auth: true, title: '用户中心'}},
-      {path: '/search', name: 'search', component: Search, meta: {auth: true, title: '搜索'}},
-      {path: '/addKeyword', name: 'addKeyword', component: addKeyword, meta: {auth: true, title: '添加关注'}},
-      {path: '/signer', name: 'signer', component: Signer, meta: {auth: true, title: '签到'}},
-      {path: '/addSign', name: 'addSign', component: addSign, meta: {auth: true, title: '添加签到'}},
+      {path: '/home', name: 'home', component: Home, meta: {title: 'AoBuy', hideBack: true}},
+      {path: '/tools', name: 'tools', component: tools, meta: {title: '工具'}},
+      {path: '/userCenter', name: 'userCenter', component: userCenter, meta: {title: '用户中心'}},
+      {path: '/search', name: 'search', component: Search, meta: {title: '搜索'}},
+      {path: '/addKeyword', name: 'addKeyword', component: addKeyword, meta: {title: '添加关注'}},
+      {path: '/signer', name: 'signer', component: Signer, meta: {title: '签到'}},
+      {path: '/addSign', name: 'addSign', component: addSign, meta: {title: '添加签到'}},
       {path: '/reward', name: 'reward', component: reward, meta: {auth: false, title: '打赏'}}
     ]
   },
