@@ -37,8 +37,10 @@ const router = new VueRouter({
 
 router.beforeEach(({meta, path, store}, from, next) => {
   let {auth = true} = meta
-  let token = localStorage.getItem('token')
-  console.log(token)
+
+  if (path === '/' || path === '/register') {
+    return next()
+  }
   api.LoginCheck()
     .then((res) => {
       let isLogin = res.isLogin
@@ -50,10 +52,7 @@ router.beforeEach(({meta, path, store}, from, next) => {
         return next({path: '/home'})
       }
     })
-  next(vm => {
-    // 通过 `vm` 访问组件实例
-
-  })
+  next()
 })
 
 /* eslint-disable no-new */

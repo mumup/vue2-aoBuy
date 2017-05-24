@@ -41,6 +41,8 @@ const actions = {
       (res) => {
         try {
           localStorage.removeItem('userInfo')
+          localStorage.removeItem('token')
+          localStorage.setItem('token', res.token)
         } catch (_) {
           alert('本地储存写入错误，若为safari浏览器请关闭隐身模式浏览。')
         }
@@ -56,16 +58,18 @@ const actions = {
   },
   // 登出
   UserLogout: ({commit}) => {
-    api.LoginOut()
-      .then(function (res) {
-        if (res.status === 200) {
-          commit(type.USER_SIGNOUT)
-          window.location = '/'
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+    // api.LoginOut()
+    //   .then(function (res) {
+    //     if (res.status === 200) {
+    //       commit(type.USER_SIGNOUT)
+    //       window.location = '/'
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error)
+    //   })
+    commit(type.USER_SIGNOUT)
+    window.location = '/'
   },
   // 首页获取所有关键词
   UserKeywordFetch: ({commit}) => {
@@ -134,6 +138,7 @@ const mutations = {
     state.isLogin = false
     state.userInfo = ''
     localStorage.removeItem('userInfo')
+    localStorage.removeItem('token')
   },
   [type.USER_FETCH_KEYWORD] (state, _keyword) {
     state.keyword = _keyword
