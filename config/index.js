@@ -2,6 +2,9 @@
 var path = require('path')
 
 module.exports = {
+  base: {
+    api: 'http://api.pmumu.com/'
+  },
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
@@ -22,14 +25,15 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/apis': {
-        target: 'http://localhost:5000/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/apis': ''
-        }
-      }
+      // '/apis': {
+      //   target: 'http://localhost:5000/',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/apis': ''
+      //   }
+      // }
     },
+    ApiUrl: 'http://localhost:5000',
       // CSS Sourcemaps off by default because relative paths are "buggy"
       // with this option, according to the CSS-Loader README
       // (https://github.com/webpack/css-loader#sourcemaps)

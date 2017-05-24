@@ -2,14 +2,18 @@
  * Created by pmumu on 2017/1/28.
  */
 import Vue from 'vue'
+import {base, dev} from '../../config'
+
+const version = 'v1'
+const apiUrl = process.env.NODE_ENV === 'development' ? dev.ApiUrl : base.api
 
 export default {
   //  注册
-  Register: data => Vue.http.post('/apis/api/user_reg', data),
+  Register: data => Vue.http.post(`${apiUrl}/${version}/user/register`, data),
 
   // 登录
   Login: function (data, cb, errCb) {
-    Vue.http.post('/apis/api/user_login', data)
+    Vue.http.post(`${apiUrl}/${version}/user/login`, data)
       .then((rs) => {
         rs.status === 200 && rs.body.status === 0
           ? cb(rs.body)
@@ -21,7 +25,7 @@ export default {
 
   // 登录状态检查
   LoginCheck: function () {
-    return Vue.http.get('/apis/api/loginCheck')
+    return Vue.http.get(`${apiUrl}/${version}/user/logincheck`)
       .then(function (data) {
         if (data.status === 200) {
           return data.body

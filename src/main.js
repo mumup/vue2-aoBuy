@@ -17,6 +17,8 @@ Vue.use(VueResource)
 Vue.use(LoadingPlugin)
 Vue.use(ToastPlugin)
 
+Vue.http.headers.common['Authorization'] = localStorage.getItem('token')
+
 // moment格式化unix时间
 Vue.prototype.$moment = function (model, val, format) {
   switch (model) {
@@ -35,7 +37,8 @@ const router = new VueRouter({
 
 router.beforeEach(({meta, path, store}, from, next) => {
   let {auth = true} = meta
-
+  let token = localStorage.getItem('token')
+  console.log(token)
   api.LoginCheck()
     .then((res) => {
       let isLogin = res.isLogin
