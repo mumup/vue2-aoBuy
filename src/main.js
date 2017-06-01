@@ -38,12 +38,15 @@ const router = new VueRouter({
 router.beforeEach(({meta, path, store}, from, next) => {
   let {auth = true} = meta
 
-  if (path === '/' || path === '/register') {
-    return next()
-  }
   api.LoginCheck()
     .then((res) => {
       let isLogin = res.isLogin
+
+      if (path === '/' || path === '/register') {
+        if (isLogin) {
+          return next({path: '/home'})
+        }
+      }
 
       if (auth && !isLogin && path !== '/') {
         return next({path: '/'})

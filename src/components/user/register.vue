@@ -76,7 +76,6 @@
           password: this.password.val,
           email: this.mail.val
         }
-        console.log(data)
         this.$store.dispatch('UserReg', data)
       },
       checkUser: function () {

@@ -3,7 +3,7 @@ var path = require('path')
 
 module.exports = {
   base: {
-    api: 'http://api.pmumu.com'
+    api: 'https://api.pmumu.com'
   },
   build: {
     env: require('./prod.env'),
