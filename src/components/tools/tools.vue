@@ -14,10 +14,10 @@
           title: '搜索工具',
           src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
           desc: '检查关键词，寻找最近优惠',
-          url: '/search'
+          url: '/tools/search'
         },
-          {title: '大妈自动签到', src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', desc: '自动签到,升级杠杠的', url: '/signer'},
-          {title: '开启短信提醒', src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', desc: '增加短信提醒，最快速度买买买'}
+          {title: '大妈自动签到', src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', desc: '自动签到,升级杠杠的', url: '/tools/signer'},
+          {title: '简版值得买', src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', desc: '无广告简约版值得买', url: '/tools/smzdm'}
         ]
       }
     },

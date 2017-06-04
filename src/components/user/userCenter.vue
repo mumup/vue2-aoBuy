@@ -6,7 +6,7 @@
       <cell title="修改密码" :link="{path:'/demo'}"></cell>
     </group>
     <group title="关于">
-      <cell title="打赏" :link="{path:'/reward'}"></cell>
+      <cell title="打赏" :link="{path:'member/reward'}"></cell>
       <cell title="反馈BUG"></cell>
       <cell title="关于作者" :link="{path:'/demo'}"></cell>
     </group>

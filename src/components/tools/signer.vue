@@ -6,7 +6,7 @@
           <img src="~assets/images/empty.png" alt="">
         </div>
         <p>empty~</p>
-        <router-link to="addSign" class="add-now">立即添加~</router-link>
+        <router-link to="/tools/add/sign" class="add-now">立即添加~</router-link>
       </div>
       <div class="signer-tips" v-if="listLength != 0">温馨提示：程序会在每天10.24签到</div>
       <swipeout>

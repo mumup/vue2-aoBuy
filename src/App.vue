@@ -32,6 +32,7 @@
   @import '~vux/src/styles/1px.less';
   @import "//at.alicdn.com/t/font_g9revw5a2tucv7vi.css";
   @import "~assets/css/login.scss";
+  @import "style/main.scss";
 
   html, body {
     height: 100%;
@@ -40,7 +41,9 @@
   }
 
   body {
-    background: #fbf9fe;
+    background: #fff;
+    max-width:750px;
+    margin: 0 auto;
   }
 
   #app {
@@ -51,6 +54,8 @@
     color: #2c3e50;
     height: 100%;
     overflow: auto;
+    background: #fbf9fe;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
   }
 
   a {
