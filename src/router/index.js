@@ -8,7 +8,10 @@ const Register = r => require.ensure([], () => r(require('components/user/regist
 const Home = r => require.ensure([], () => r(require('components/user/home')), 'Home')
 const Layout = r => require.ensure([], () => r(require('components/user/layout')), 'Home')
 const addKeyword = r => require.ensure([], () => r(require('components/user/addKeyword')), 'Home')
+
 const Smzdm = r => require.ensure([], () => r(require('components/smzdm/')), 'smzdm')
+
+const Qrcode = r => require.ensure([], () => r(require('components/user/qrcode/')), 'qrcode')
 
 import addSign from 'components/tools/addSign'
 import tools from 'components/tools/tools'
@@ -26,6 +29,7 @@ export default [
     meta: {auth: false}
   },
   {path: '/register', name: 'register', component: Register, meta: {auth: false, title: '注册', hideBack: true}},
+  {path: '/qrcode/yt', name: 'Qcode', component: Qrcode},
   {
     path: '',
     name: 'Layout',
