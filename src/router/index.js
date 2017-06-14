@@ -11,7 +11,7 @@ const addKeyword = r => require.ensure([], () => r(require('components/user/addK
 
 const Smzdm = r => require.ensure([], () => r(require('components/smzdm/')), 'smzdm')
 
-const Qrcode = r => require.ensure([], () => r(require('components/user/qrcode/')), 'qrcode')
+const Qrcode = r => require.ensure([], () => r(require('components/user/qrcode')), 'Qrcode')
 
 import addSign from 'components/tools/addSign'
 import tools from 'components/tools/tools'
@@ -29,7 +29,7 @@ export default [
     meta: {auth: false}
   },
   {path: '/register', name: 'register', component: Register, meta: {auth: false, title: '注册', hideBack: true}},
-  {path: '/qrcode/yt', name: 'Qcode', component: Qrcode},
+  {path: '/qrcode', name: 'Qcode', component: Qrcode, meta: {auth: false}},
   {
     path: '',
     name: 'Layout',
