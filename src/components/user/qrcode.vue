@@ -2,7 +2,7 @@
   <div id="qrcode">
     <v-title>R&F门禁</v-title>
     <div class="code-box">
-      <qrcode :value="value"></qrcode>
+      <qrcode :value="value" :size="160"></qrcode>
       <div class="exp">
         <countdown slot="value" v-model="time" :start="start" @on-finish="finish"></countdown>
         秒后更新
@@ -35,7 +35,7 @@
     },
     computed: {},
     created () {
-//      this.getCode()
+      this.getCode()
     },
     methods: {
       finish () {
@@ -60,7 +60,7 @@
 
 <style>
   .code-box {
-    margin-top: 40%;
+    margin-top: 20%;
   }
 
   .button-box {
