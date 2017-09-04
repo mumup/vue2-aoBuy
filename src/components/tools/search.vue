@@ -29,7 +29,7 @@
           content: 'Pull Down To Refresh',
           height: 60,
           autoRefresh: false,
-          downContent: '震惊!!继续下拉居然会↓',
+          downContent: '震惊！继续下拉居然会↓',
           upContent: '居然会刷新↑',
           loadingContent: '[]~(￣▽￣)~*',
           clsPrefix: 'xs-plugin-pulldown-'
